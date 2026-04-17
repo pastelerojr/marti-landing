@@ -137,11 +137,11 @@ if (video && playBtn) {
 }
 
 // =========================================================================
-// E. FALLBACK DEL BOTÓN DE MAIL
+// E. FALLBACK DEL BOTÓN DE MAIL (Para todos los botones con clase mail-btn-class)
 // =========================================================================
-const mailBtn = document.getElementById('mail-btn');
-if (mailBtn) {
-  mailBtn.addEventListener('click', (e) => {
+const mailBtns = document.querySelectorAll('.mail-btn-class');
+mailBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
     // Intentamos copiar el email al portapapeles de forma automática
     const emailToCopy = "martinamanduciredes@gmail.com";
     navigator.clipboard.writeText(emailToCopy).then(() => {
@@ -152,4 +152,4 @@ if (mailBtn) {
       console.log('Error al copiar el texto: ', err);
     });
   });
-}
+});
