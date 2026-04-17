@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marti Manduci | Cantante y Compositora</title>
+  <meta name="description" content="Sitio oficial de Marti Manduci. Descubre su música pop y r&b, su historia y próximos lanzamientos.">
+  
+  <!-- Enlazamos fuentes de Google Fonts (Playfair Display para títulos, Inter para textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Archivo CSS principal -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======================== NAVBAR ======================== -->
+  <!-- La etiqueta <nav> se usa para la navegación principal de la página -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="#hero" class="brand">MARTI MANDUCI</a>
+      
+      <!-- Menú de links internos -->
+      <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#biografia">Biografía</a></li>
+        <li><a href="#musica">Música</a></li>
+        <li><a href="#redes">Contacto</a></li>
+      </ul>
+
+      <!-- Iconos de redes sociales en el Navbar -->
+      <div class="nav-socials">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/martimanduci" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@martimanduci_?_r=1&_t=ZS-95cQZXSJfAy" target="_blank" rel="noopener noreferrer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+        </a>
+        <!-- Email (Aplicación Nativa + Copiar al Portapapeles) -->
+        <a href="mailto:martinamanduciredes@gmail.com" id="mail-btn" title="Enviar correo a Marti">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- Botón de Menú Hamburguesa (visible solo en móviles) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menú Móvil Desplegable -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#hero" class="mobile-link">Inicio</a></li>
+      <li><a href="#biografia" class="mobile-link">Biografía</a></li>
+      <li><a href="#musica" class="mobile-link">Música</a></li>
+      <li><a href="#redes" class="mobile-link">Contacto</a></li>
+    </ul>
+  </div>
+
+  <!-- ======================== HERO SECTION ======================== -->
+  <!-- Esta sección es la portada. El div parallax-bg se animará con GSAP -->
+  <header id="hero" class="hero-section">
+    <!-- Imagen oficial de portada cargada por el usuario -->
+    <div class="parallax-bg" style="background-image: url('images and videos/Foto de portada.jpg');"></div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <h1 class="hero-title">Marti Manduci</h1>
+      <p class="hero-subtitle">Voz, Pop y R&B en su máxima expresión</p>
+      <a href="#musica" class="btn-primary">Escuchar Ahora</a>
+    </div>
+    
+    <!-- Flecha animada indicadora de scroll -->
+    <a href="#biografia" class="scroll-indicator">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </a>
+  </header>
+
+  <!-- ======================== BIOGRAFÍA ======================== -->
+  <section id="biografia" class="bio-section">
+    <div class="container bio-container">
+      <div class="bio-text">
+        <h2 class="section-title gs-reveal">Sobre Marti</h2>
+        <!-- Dividimos el texto en párrafos para animarlos individualmente -->
+        <p class="gs-reveal">Con un rango vocal de 4 octavas, Marti Manduci es una cantante y compositora nacida en 2003 en Buenos Aires, Argentina. Con una fuerte pasión por la música, combina melodías suaves con letras profundas y emotivas.</p>
+        <p class="gs-reveal">Desde los 6 años se dedica a cantar y trabajar en su voz, fusionando Pop y R&B con una sensibilidad única.</p>
+        <p class="gs-reveal">Sigue los pasos de sus grandes influencias en la música, como Whitney Houston, Mariah Carey, Céline Dion, Demi Lovato y Ariana Grande.</p>
+      </div>
+      <div class="bio-video gs-reveal">
+        <h3 class="section-title" style="font-size: 2rem; margin-bottom: 20px;">Presentación</h3>
+        <div class="video-container" id="presentation-video-wrapper">
+          <video id="presentation-video" poster="images and videos/Fotos/_DSC1216.jpg">
+            <source src="images and videos/Video de presentación.mp4" type="video/mp4">
+            Tu navegador no soporta el formato de video.
+          </video>
+          <!-- Botón de Play Personalizado -->
+          <div class="custom-play-btn" id="custom-play-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== MÚSICA ======================== -->
+  <section id="musica" class="music-section">
+    <div class="container">
+      <h2 class="section-title text-center gs-reveal">Música</h2>
+      <p class="section-subtitle text-center gs-reveal">Sumérgete en el universo de Marti.</p>
+      
+      <div class="music-content gs-reveal">
+        <!-- Reproductor Embebido de Spotify -->
+        <!-- Utilizamos un iframe para insertar el reproductor oficial -->
+        <div class="spotify-embed">
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/613LlOhZqqAM2Y073pHQsm?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        
+        <!-- Reproductor Embebido de YouTube -->
+        <div class="youtube-embed">
+          <a href="https://www.youtube.com/watch?v=yd74XTLviMw" target="_blank" rel="noopener noreferrer" style="display:block; position:relative; border-radius:12px; overflow:hidden; height:352px;">
+            <img src="https://i.ytimg.com/vi/yd74XTLviMw/maxresdefault.jpg" alt="Ver video en YouTube" style="width:100%; height:100%; object-fit:cover;">
+            <div style="position:absolute; inset:0; background:rgba(0,0,0,0.4); display:flex; align-items:center; justify-content:center; transition: background 0.3s;" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+              <svg width="68" height="68" viewBox="0 0 24 24" fill="#FF0000"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon fill="#FFFFFF" points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== GALERÍA ======================== -->
+  <section id="galeria" class="galeria-section" style="padding-top: 0;">
+    <div class="container text-center" style="max-width: 1600px; width: 95%;">
+      <h2 class="section-title gs-reveal">Galería</h2>
+      <p class="section-subtitle gs-reveal">Sesión fotográfica de Marti.</p>
+      
+      <div class="galeria-grid gs-reveal">
+        <div class="glass-box">
+          <img src="images and videos/Fotos/_DSC1750.jpg" alt="Sesión Marti Manduci 1">
+        </div>
+        <div class="glass-box">
+          <img src="images and videos/Fotos/_DSC1948.jpg" alt="Sesión Marti Manduci 2">
+        </div>
+        <div class="glass-box">
+          <img src="images and videos/Fotos/_DSC1769.jpg" alt="Sesión Marti Manduci 3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== REDES SOCIALES ======================== -->
+  <section id="redes" class="social-section">
+    <div class="container text-center">
+      <h2 class="section-title gs-reveal">Conecta con Marti</h2>
+      <p class="section-subtitle gs-reveal">Sígueme en todas mis plataformas y no te pierdas nada.</p>
+      
+      <div class="social-grid">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/martimanduci" target="_blank" rel="noopener noreferrer" class="social-card gs-reveal">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <span>Instagram</span>
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@martimanduci_?_r=1&_t=ZS-95cQZXSJfAy" target="_blank" rel="noopener noreferrer" class="social-card gs-reveal">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          <span>TikTok</span>
+        </a>
+
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@martimanduci" target="_blank" rel="noopener noreferrer" class="social-card gs-reveal">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+          <span>YouTube</span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5491131382556" target="_blank" rel="noopener noreferrer" class="social-card gs-reveal">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Spotify (General) -->
+        <a href="https://open.spotify.com/intl-es/artist/613LlOhZqqAM2Y073pHQsm?si=eFDSMO-1SpK6L9RDiPLr_A" target="_blank" rel="noopener noreferrer" class="social-card gs-reveal">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.562.387-.857.207-2.35-1.434-5.305-1.76-8.785-.964-.335.077-.67-.133-.746-.467-.077-.334.132-.67.467-.746 3.805-.87 7.076-.496 9.714 1.115.294.18.386.562.207.855zm1.03-2.3c-.226.366-.704.482-1.07.256-2.686-1.65-6.785-2.13-9.965-1.166-.412.125-.845-.106-.97-.517-.124-.413.107-.845.52-.97 3.63-1.1 8.318-.56 11.428 1.352.366.226.48.704.256 1.045zm.116-2.404c-3.21-1.905-8.5-2.08-11.56-1.15-.494.15-1.01-.13-1.16-.624-.15-.493.13-1.01.624-1.16 3.51-1.066 9.35-.86 13.06 1.34.444.264.59.84.326 1.284-.264.443-.84.59-1.284.326z"/>
+          </svg>
+          <span>Spotify</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FOOTER ======================== -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p>&copy; 2026 Marti Manduci. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ======================== SCRIPTS ======================== -->
+  <!-- 1. Importamos GSAP y ScrollTrigger desde un CDN para las animaciones complejas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- 2. Importamos nuestro script personalizado -->
+  <script src="js/main.js"></script>
+</body>
+</html>

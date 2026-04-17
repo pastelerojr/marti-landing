@@ -1,0 +1,628 @@
+/* =========================================================================
+   VARIABLES GLOBALES (Paleta de Colores y Tipografías)
+   -------------------------------------------------------------------------
+   Usamos variables para mantener consistencia. La paleta es inspirada en
+   los tonos suaves (rosados tenues, nudes, blanco crema y gris oscuro).
+========================================================================= */
+:root {
+  /* Tonos Dark Violet / Night based on Screenshot */
+  --color-bg: #0A050D; /* Base muy oscura, casi negro */
+  --color-text: #E0DCE2; /* Blanco suave/Grisáceo para lectura */
+  --color-accent: #2B1638; /* Violeta/Morado para botones y tarjetas */
+  --color-accent-dark: #1E0D29; /* Violeta más oscuro on hover */
+  --color-light: #160B1F; /* Fondo de tarjetas */
+  --color-navbar: rgba(10, 5, 13, 0.85); /* Navbar oscura glassmorphism */
+  --color-border: rgba(255, 255, 255, 0.05); /* Bordes sutiles blancos */
+
+  /* Tipografías */
+  --font-headings: 'Playfair Display', serif; /* Títulos elegantes */
+  --font-body: 'Inter', sans-serif; /* Texto limpio */
+
+  /* Transiciones */
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* =========================================================================
+   RESETEO BASE (Mobile-First approach)
+========================================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* Habilita un scroll nativo suave (aunque GSAP lo mejorará) */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  background-image: linear-gradient(180deg, #1C1023 0%, #0A050D 100%);
+  background-attachment: fixed;
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Contenedor general para limitar el ancho en pantallas grandes */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* =========================================================================
+   COMPONENTES
+========================================================================= */
+
+/* --- Títulos --- */
+.section-title {
+  font-family: var(--font-headings);
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--color-text);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  margin-bottom: 40px;
+}
+
+/* --- Botones --- */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* Brillo neón base blanco */
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  color: #FFF;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); /* Efecto Neón blanco fuerte */
+}
+
+/* =========================================================================
+   NAVBAR (Navegación)
+========================================================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: var(--transition-smooth);
+  padding: 20px 0;
+}
+
+/* Esta clase se añade vía JS cuando se hace scroll */
+.navbar.scrolled {
+  background-color: var(--color-navbar);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  font-family: var(--font-headings);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: none; /* Oculto en móviles (mobile-first) */
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/* Animación sutil de subrayado al hacer hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-text);
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-socials {
+  display: none; /* Oculto en móviles */
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-socials a:hover {
+  color: var(--color-accent-dark);
+  transform: scale(1.1);
+}
+
+/* Menú Hamburguesa para Móviles */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Siempre por encima */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: var(--transition-smooth);
+}
+
+/* Animación de la cruz en el menú activo */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú Móvil Desplegable */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-smooth);
+  z-index: 999;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu ul {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.mobile-link {
+  font-family: var(--font-headings);
+  font-size: 2rem;
+}
+
+/* =========================================================================
+   HERO SECTION (Portada)
+========================================================================= */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden; /* Importante para el efecto parallax */
+  color: #FFFFFF; /* Texto blanco puro como solicitaste para destacar */
+}
+
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%; /* Más grande para poder hacer parallax */
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+/* Capa oscura semitransparente para que el texto sea legible */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: -1;
+}
+
+.hero-content {
+  padding: 0 20px;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: var(--font-headings);
+  font-size: 4rem;
+  font-weight: 700; /* Tipografía más gruesa */
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4), 0 4px 20px rgba(0,0,0,0.8); /* Glow de neón + sombra oscura */
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Indicador de Scroll hacia abajo */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFFFFF;
+  opacity: 0.7;
+  animation: scroll-bounce 2s infinite;
+  z-index: 10;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 15px rgba(255,255,255,0.8));
+}
+
+@keyframes scroll-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+  40% { transform: translateY(-15px) translateX(-50%); }
+  60% { transform: translateY(-7px) translateX(-50%); }
+}
+
+/* =========================================================================
+   BIOGRAFÍA
+========================================================================= */
+.bio-section {
+  background-color: var(--color-light);
+  padding: 50px 0;
+}
+
+.bio-container {
+  display: flex;
+  flex-direction: column; /* Móvil: uno debajo de otro */
+  gap: 50px;
+  align-items: center;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+.bio-text p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.bio-video {
+  flex: 1;
+  width: 100%;
+}
+
+.video-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(210, 138, 151, 0.6), 0 0 50px rgba(210, 138, 151, 0.3); /* Resplandor Neón en el video */
+  border: 1px solid rgba(210, 138, 151, 0.4);
+  background: var(--color-light);
+  padding: 10px;
+}
+
+.bio-video video {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.custom-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4); /* Botón play brilla */
+  z-index: 10;
+  color: var(--color-accent);
+}
+
+.custom-play-btn svg {
+  width: 35px;
+  height: 35px;
+  margin-left: 5px; /* Compensa visualmente el centro del triángulo */
+}
+
+.custom-play-btn:hover {
+  background-color: #FFFFFF;
+  transform: translate(-50%, -50%) scale(1.1);
+  color: var(--color-accent-dark);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================================
+   MÚSICA
+========================================================================= */
+.music-section {
+  background-color: var(--color-bg);
+  padding: 50px 0;
+}
+
+.music-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--color-light);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+/* =========================================================================
+   GALERÍA
+========================================================================= */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.03); /* Cristal casi transparente */
+  backdrop-filter: blur(15px); /* Efecto liquid glass */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
+  border-radius: 24px;
+  padding: 15px; /* Espacio para que el cristal se note alrededor de la foto */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+}
+
+/* Optimización móvil para la caja de cristal */
+@media (max-width: 768px) {
+  .glass-box {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.05); /* Fondo apenas visible sin blur */
+    box-shadow: none; /* Quita sombra pesada en móvil */
+    padding: 8px; /* Menos espacio para pantallas chicas */
+    border-radius: 16px;
+  }
+}
+
+.galeria-grid img {
+  width: 100%;
+  height: 100%; /* Obligatorio para que object-fit: cover no deforme la imagen */
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 1 / 1; /* Cuadrado perfecto */
+  display: block;
+}
+
+/* =========================================================================
+   REDES SOCIALES Y CONTACTO
+========================================================================= */
+.social-section {
+  background-color: var(--color-light);
+  padding: 50px 0;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Móvil: una columna */
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.social-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border: 1px solid var(--color-border);
+}
+
+.social-card:hover {
+  background-color: var(--color-accent);
+  color: #FFF;
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5); /* Brillo Neón Blanco */
+}
+
+/* =========================================================================
+   FOOTER
+========================================================================= */
+.footer {
+  background-color: var(--color-light);
+  color: var(--color-text);
+  padding: 40px 0;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* =========================================================================
+   MEDIA QUERIES (Adaptación a pantallas más grandes)
+========================================================================= */
+
+/* Tablets (768px o más) */
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-title {
+    font-size: 6rem;
+  }
+  
+  .music-content {
+    grid-template-columns: 1fr 1fr; /* 2 columnas para reproductores en tablet */
+  }
+  
+  .galeria-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas para galería */
+  }
+  
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
+}
+
+/* Desktop (1024px o más) */
+@media (min-width: 1024px) {
+  /* Mostramos el menú horizontal y ocultamos la hamburguesa */
+  .nav-links, .nav-socials {
+    display: flex;
+  }
+  
+  .hamburger {
+    display: none;
+  }
+
+  .bio-container {
+    flex-direction: row; /* Imagen y texto lado a lado */
+  }
+  
+  .bio-text {
+    padding-right: 50px;
+  }
+  
+  .social-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+  }
+}
+
+/* =========================================================================
+   ANIMACIONES EXTRA: DOPAMINA & NEÓN REAL
+========================================================================= */
+
+/* Efecto eliminado a pedido del usuario */
+
+/* Efecto de radar/sonar para el botón de play */
+@keyframes sonar-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7), 0 0 20px rgba(255,255,255,0.8); }
+  70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0), 0 0 40px rgba(255,255,255,0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0), 0 0 20px rgba(255,255,255,0.8); }
+}
+
+/* Efecto de levitación para las redes sociales */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Aplicación de las animaciones */
+
+.custom-play-btn {
+  animation: sonar-pulse 2s infinite !important;
+}
+
+/* Levitar las tarjetas de redes como burbujas */
+.social-card {
+  animation: float 4s ease-in-out infinite;
+}
+.social-card:nth-child(1) { animation-delay: 0s; }
+.social-card:nth-child(2) { animation-delay: 0.5s; }
+.social-card:nth-child(3) { animation-delay: 1s; }
+.social-card:nth-child(4) { animation-delay: 1.5s; }
+.social-card:nth-child(5) { animation-delay: 2s; }
+
+/* Contenedores con neón puro blanco para resaltar */
+.video-container, .music-content {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Hover elegante de Galería (Liquid Glass Box) - Solo para PC */
+@media (hover: hover) and (pointer: fine) {
+  .glass-box:hover {
+    transform: translateY(-8px) scale(1.02); /* Escala sutil hacia arriba, sin giros */
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 2;
+    position: relative;
+  }
+}
