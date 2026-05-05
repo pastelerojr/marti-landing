@@ -178,16 +178,8 @@
           Diseñado para crear un <span class="highlight">momento especial</span>, con la voz como protagonista y una puesta cuidada.
         </p>
         <p class="sub-text">
-          Ideal para darle un toque único a cualquier clima o formato de evento:
+          Ideal para darle un toque único a cualquier clima o formato de evento.
         </p>
-        <!-- Cajas/Píldoras de tipos de eventos -->
-        <div class="event-tags">
-          <span class="event-tag">Casamientos</span>
-          <span class="event-tag">Eventos Corporativos</span>
-          <span class="event-tag">Recepciones</span>
-          <span class="event-tag">Cenas Especiales</span>
-          <span class="event-tag">Momentos Íntimos</span>
-        </div>
       </div>
       
       <div class="pricing-grid gs-reveal">
@@ -218,10 +210,9 @@
         </a>
       </div>
 
-      <div class="cta-container gs-reveal">
-        <p class="cta-text">¿Lista para llevar tu evento al siguiente nivel?</p>
+      <div class="gs-reveal" style="margin-top: 50px;">
         <a href="#contacto" class="btn-primary btn-large">
-          Consultar Fechas <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -4px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          Más información <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px; vertical-align: -4px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
     </div>
@@ -233,7 +224,7 @@
       <h2 class="section-title gs-reveal" style="margin-bottom: 40px;">Contacto</h2>
       
       <div class="contact-container gs-reveal">
-        <form action="https://formsubmit.co/martinamanduciredes@gmail.com" method="POST" class="contact-form">
+        <form id="ajax-contact-form" action="https://formsubmit.co/ajax/martinamanduciredes@gmail.com" method="POST" class="contact-form">
           <!-- Configuración de FormSubmit -->
           <input type="hidden" name="_subject" value="Nuevo mensaje desde tu sitio web!">
           <input type="hidden" name="_captcha" value="false">
@@ -248,6 +239,8 @@
             <textarea name="message" id="message" rows="5" placeholder="Compartinos la fecha, el estilo de tu evento y los datos necesarios. Te contactaremos para diseñar una experiencia musical personalizada" required></textarea>
           </div>
           <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensaje</button>
+
+          <div id="form-message" style="display: none; margin-top: 15px; padding: 15px; border-radius: 12px; font-weight: 500; font-size: 0.95rem;"></div>
         </form>
       </div>
     </div>
