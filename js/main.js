@@ -134,6 +134,8 @@ if (video) {
 // E. FORMULARIO DE CONTACTO (AJAX FormSubmit)
 // =========================================================================
 const contactForm = document.querySelector('.contact-form');
+const formStatus = document.getElementById('form-status');
+
 if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault(); // Previene la redirección nativa
@@ -142,6 +144,12 @@ if (contactForm) {
     const originalText = btn.textContent;
     btn.textContent = 'Enviando...';
     btn.disabled = true;
+
+    // Resetear estado previo
+    if (formStatus) {
+      formStatus.className = 'form-status';
+      formStatus.textContent = '';
+    }
 
     // Usamos fetch para enviar los datos de forma invisible
     fetch(contactForm.action, {
@@ -152,17 +160,34 @@ if (contactForm) {
       }
     }).then(response => {
       if (response.ok) {
-        alert('¡Mensaje enviado con éxito!');
+        if (formStatus) {
+          formStatus.textContent = '¡Mensaje enviado con éxito!';
+          formStatus.classList.add('success');
+        }
         contactForm.reset();
       } else {
-        alert('Hubo un error al enviar el mensaje. Intenta de nuevo.');
+        if (formStatus) {
+          formStatus.textContent = 'Hubo un error al enviar el mensaje. Intenta de nuevo.';
+          formStatus.classList.add('error');
+        }
       }
     }).catch(error => {
-      alert('Hubo un error de conexión al enviar el mensaje. Intenta de nuevo.');
+      if (formStatus) {
+        formStatus.textContent = 'Hubo un error de conexión al enviar el mensaje. Intenta de nuevo.';
+        formStatus.classList.add('error');
+      }
     }).finally(() => {
       // Restauramos el botón
       btn.textContent = originalText;
       btn.disabled = false;
+      
+      // Ocultar el mensaje después de 5 segundos si fue exitoso
+      if (formStatus && formStatus.classList.contains('success')) {
+        setTimeout(() => {
+          formStatus.className = 'form-status';
+          formStatus.textContent = '';
+        }, 5000);
+      }
     });
   });
 }

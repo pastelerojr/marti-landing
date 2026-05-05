@@ -389,14 +389,6 @@ ul {
   display: block;
 }
 
-.covers-grid .video-container video {
-  width: 100%;
-  border-radius: 8px;
-  display: block;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
 .custom-play-btn {
   position: absolute;
   top: 50%;
@@ -455,10 +447,10 @@ ul {
 ========================================================================= */
 .covers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   width: 100%;
-  max-width: 750px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -720,6 +712,31 @@ ul {
 
 .form-group textarea {
   resize: vertical;
+}
+
+.form-status {
+  display: none;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-status.success {
+  display: block;
+  background: rgba(46, 213, 115, 0.1);
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+}
+
+.form-status.error {
+  display: block;
+  background: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
 }
 
 /* =========================================================================
