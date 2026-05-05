@@ -383,10 +383,12 @@ ul {
   padding: 10px;
 }
 
-.bio-video video {
+.video-container video {
   width: 100%;
   border-radius: 8px;
   display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .custom-play-btn {
