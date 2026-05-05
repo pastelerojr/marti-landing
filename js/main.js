@@ -114,10 +114,9 @@ revealElements.forEach((el) => {
 // D. CUSTOM VIDEO PLAYER (Presentación)
 // =========================================================================
 const video = document.getElementById('presentation-video');
-const playBtn = document.getElementById('custom-play-btn');
 
-if (video && playBtn) {
-  // Volumen inicial cuando se active el sonido
+if (video) {
+  // Volumen inicial cuando el usuario lo desmutee
   video.volume = 0.5;
 
   // Reproducir automáticamente sin sonido cuando entra en pantalla
@@ -128,16 +127,6 @@ if (video && playBtn) {
     onLeave: () => video.pause(),
     onEnterBack: () => { if (video.paused) video.play(); },
     onLeaveBack: () => video.pause(),
-  });
-
-  playBtn.addEventListener('click', () => {
-    // Al hacer clic, activamos el sonido
-    if (video.muted) {
-      video.muted = false;
-      video.setAttribute('controls', 'controls'); // Mostrar controles nativos
-      playBtn.style.display = 'none'; // Ocultar el botón gigante
-      video.play(); // Asegurarnos de que siga reproduciendo
-    }
   });
 }
 
