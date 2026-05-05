@@ -117,22 +117,27 @@ const video = document.getElementById('presentation-video');
 const playBtn = document.getElementById('custom-play-btn');
 
 if (video && playBtn) {
-  // Ajusta el volumen inicial a un 30% para que no asuste al usuario
-  video.volume = 0.3;
+  // Volumen inicial cuando se active el sonido
+  video.volume = 0.5;
 
-  playBtn.addEventListener('click', () => {
-    // Reproduce el video
-    video.play();
-    // Añade los controles nativos (volumen, pantalla completa, etc)
-    video.setAttribute('controls', 'controls');
-    // Oculta el botón personalizado
-    playBtn.style.display = 'none';
+  // Reproducir automáticamente sin sonido cuando entra en pantalla
+  ScrollTrigger.create({
+    trigger: "#presentation-video-wrapper",
+    start: "top 75%", // Se activa cuando asoma un poco por debajo
+    onEnter: () => { if (video.paused) video.play(); },
+    onLeave: () => video.pause(),
+    onEnterBack: () => { if (video.paused) video.play(); },
+    onLeaveBack: () => video.pause(),
   });
 
-  // Opcional: si el usuario lo pausa, se queda con los controles nativos
-  video.addEventListener('pause', () => {
-    // Si quisieras que el botón vuelva a aparecer, sería aquí.
-    // Pero es más limpio dejar los controles nativos una vez iniciado.
+  playBtn.addEventListener('click', () => {
+    // Al hacer clic, activamos el sonido
+    if (video.muted) {
+      video.muted = false;
+      video.setAttribute('controls', 'controls'); // Mostrar controles nativos
+      playBtn.style.display = 'none'; // Ocultar el botón gigante
+      video.play(); // Asegurarnos de que siga reproduciendo
+    }
   });
 }
 
