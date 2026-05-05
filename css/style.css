@@ -142,6 +142,11 @@ ul {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center; /* Centrado vertical */
+}
+
+.brand {
+  display: flex;
   align-items: center;
 }
 
@@ -153,6 +158,7 @@ ul {
 .nav-links {
   display: none; /* Oculto en móviles (mobile-first) */
   gap: 30px;
+  align-items: center; /* Asegurar centrado vertical de los links */
 }
 
 .nav-links a {
@@ -437,46 +443,137 @@ ul {
 }
 
 /* =========================================================================
-   GALERÍA
+   COVERS (Grilla de 3 videos)
 ========================================================================= */
-.galeria-grid {
+.covers-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.glass-box {
-  background: rgba(255, 255, 255, 0.03); /* Cristal casi transparente */
-  backdrop-filter: blur(15px); /* Efecto liquid glass */
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
-  border-radius: 24px;
-  padding: 15px; /* Espacio para que el cristal se note alrededor de la foto */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+/* =========================================================================
+   SHOW (Pricing Cards Estilo Apple)
+========================================================================= */
+.show-section {
+  background-color: var(--color-light);
+  padding: 80px 0;
 }
 
-/* Optimización móvil para la caja de cristal */
-@media (max-width: 768px) {
-  .glass-box {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(255, 255, 255, 0.05); /* Fondo apenas visible sin blur */
-    box-shadow: none; /* Quita sombra pesada en móvil */
-    padding: 8px; /* Menos espacio para pantallas chicas */
-    border-radius: 16px;
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Móvil: 1 columna */
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr 1fr; /* PC: 2 columnas */
   }
 }
 
-.galeria-grid img {
+.pricing-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: left;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pricing-card h3 {
+  font-family: var(--font-headings);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.pricing-card .card-desc {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  margin-bottom: 30px;
+  min-height: 60px;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-top: auto;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.pricing-features svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-accent); /* Violeta o puedes usar #fff para más sobriedad */
+}
+
+/* =========================================================================
+   CONTACTO (Formulario)
+========================================================================= */
+.contact-section {
+  background-color: var(--color-bg);
+  padding: 80px 0;
+}
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group input,
+.form-group textarea {
   width: 100%;
-  height: 100%; /* Obligatorio para que object-fit: cover no deforme la imagen */
-  object-fit: cover;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  aspect-ratio: 1 / 1; /* Cuadrado perfecto */
-  display: block;
+  padding: 15px 20px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 15px rgba(43, 22, 56, 0.5); /* Resplandor violeta sutil */
+}
+
+.form-group textarea {
+  resize: vertical;
 }
 
 /* =========================================================================
@@ -619,13 +716,4 @@ ul {
   border: 1px solid rgba(255, 255, 255, 0.5) !important;
 }
 
-/* Hover elegante de Galería (Liquid Glass Box) - Solo para PC */
-@media (hover: hover) and (pointer: fine) {
-  .glass-box:hover {
-    transform: translateY(-8px) scale(1.02); /* Escala sutil hacia arriba, sin giros */
-    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 2;
-    position: relative;
-  }
-}
+/* Eliminamos la regla hover de la galeria glass-box porque ya no existe */

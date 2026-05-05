@@ -32,7 +32,8 @@
         <li><a href="#hero">Inicio</a></li>
         <li><a href="#biografia">Biografía</a></li>
         <li><a href="#musica">Música</a></li>
-        <li><a href="#redes">Contacto</a></li>
+        <li><a href="#show">Show</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
 
       <!-- Iconos de redes sociales en el Navbar -->
@@ -66,7 +67,8 @@
       <li><a href="#hero" class="mobile-link">Inicio</a></li>
       <li><a href="#biografia" class="mobile-link">Biografía</a></li>
       <li><a href="#musica" class="mobile-link">Música</a></li>
-      <li><a href="#redes" class="mobile-link">Contacto</a></li>
+      <li><a href="#show" class="mobile-link">Show</a></li>
+      <li><a href="#contacto" class="mobile-link">Contacto</a></li>
     </ul>
   </div>
 
@@ -133,22 +135,73 @@
     </div>
   </section>
 
-  <!-- ======================== GALERÍA ======================== -->
-  <section id="galeria" class="galeria-section" style="padding-top: 0;">
-    <div class="container text-center" style="max-width: 1600px; width: 95%;">
-      <h2 class="section-title gs-reveal">Galería</h2>
-      <p class="section-subtitle gs-reveal">Sesión fotográfica de Marti.</p>
+  <!-- ======================== COVERS ======================== -->
+  <section id="covers" class="music-section">
+    <div class="container">
+      <h2 class="section-title text-center gs-reveal">Covers</h2>
+      <p class="section-subtitle text-center gs-reveal">Repertorio inspirado en Pop y R&B</p>
       
-      <div class="galeria-grid gs-reveal">
-        <div class="glass-box">
-          <img src="images and videos/Fotos/_DSC1750.jpg" alt="Sesión Marti Manduci 1">
+      <div class="covers-grid gs-reveal">
+        <!-- Bloque 1 -->
+        <div class="video-container">
+          <video poster="images and videos/Fotos/_DSC1750.jpg" muted playsinline controls>
+            <!-- <source src="images and videos/cover1.mp4" type="video/mp4"> -->
+            Tu navegador no soporta el formato de video.
+          </video>
         </div>
-        <div class="glass-box">
-          <img src="images and videos/Fotos/_DSC1948.jpg" alt="Sesión Marti Manduci 2">
+        <!-- Bloque 2 -->
+        <div class="video-container">
+          <video poster="images and videos/Fotos/_DSC1948.jpg" muted playsinline controls>
+            <!-- <source src="images and videos/cover2.mp4" type="video/mp4"> -->
+            Tu navegador no soporta el formato de video.
+          </video>
         </div>
-        <div class="glass-box">
-          <img src="images and videos/Fotos/_DSC1769.jpg" alt="Sesión Marti Manduci 3">
+        <!-- Bloque 3 -->
+        <div class="video-container">
+          <video poster="images and videos/Fotos/_DSC1769.jpg" muted playsinline controls>
+            <!-- <source src="images and videos/cover3.mp4" type="video/mp4"> -->
+            Tu navegador no soporta el formato de video.
+          </video>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SHOW ======================== -->
+  <section id="show" class="show-section">
+    <div class="container text-center">
+      <h2 class="section-title gs-reveal">El Show</h2>
+      <p class="section-subtitle gs-reveal" style="max-width: 800px; margin: 0 auto 40px auto; font-size: 1.15rem; line-height: 1.8;">
+        El show está pensado para crear un momento especial, con la voz como protagonista y una puesta cuidada que se adapta al estilo de cada evento.<br><br>
+        Cada presentación puede adaptarse al clima del evento, ya sea para un momento íntimo, una recepción, una cena especial, un casamiento, un evento corporativo y celebraciones donde la música sea parte central de la experiencia.
+      </p>
+      
+      <div class="pricing-grid gs-reveal">
+        <!-- Formato Solista -->
+        <div class="pricing-card">
+          <h3>Formato Solista</h3>
+          <p class="card-desc">La propuesta puede realizarse en formato solista, con pistas seleccionadas previamente.</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Voz Principal</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Pistas Instrumentales</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Repertorio Emotivo y Potente</li>
+          </ul>
+        </div>
+        
+        <!-- Formato Acústico -->
+        <div class="pricing-card featured">
+          <h3>Formato Acústico</h3>
+          <p class="card-desc">Una versión más cálida y acústica, acompañada por piano o guitarra en vivo.</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Voz Principal</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Piano o Guitarra en Vivo</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Mayor intimidad y conexión</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gs-reveal" style="margin-top: 50px;">
+        <a href="#contacto" class="btn-primary">Consultar Fechas</a>
       </div>
     </div>
   </section>
@@ -191,6 +244,33 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           <span>Correo Electrónico</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CONTACTO ======================== -->
+  <section id="contacto" class="contact-section">
+    <div class="container text-center">
+      <h2 class="section-title gs-reveal">Contacto</h2>
+      <p class="section-subtitle gs-reveal">Escríbeme para consultas y contrataciones.</p>
+      
+      <div class="contact-container gs-reveal">
+        <form action="https://formsubmit.co/martinamanduciredes@gmail.com" method="POST" class="contact-form">
+          <!-- Configuración de FormSubmit -->
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde tu sitio web!">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-group">
+            <input type="text" name="name" id="name" placeholder="Tu Nombre" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" placeholder="Tu Correo Electrónico" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" id="message" rows="5" placeholder="¿En qué te puedo ayudar?" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensaje</button>
+        </form>
       </div>
     </div>
   </section>
