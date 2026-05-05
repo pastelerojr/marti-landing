@@ -115,37 +115,39 @@ ul {
 ========================================================================= */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
   z-index: 1000;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.05); /* Liquid glass base */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
   transition: var(--transition-smooth);
-  padding: 20px 0;
+  padding: 15px 30px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Esta clase se añade vía JS cuando se hace scroll */
 .navbar.scrolled {
-  background-color: var(--color-navbar);
-  backdrop-filter: blur(10px);
-  padding: 15px 0;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  background-color: rgba(10, 5, 13, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+  padding: 10px 30px;
 }
 
 .navbar-container {
-  width: 90%;
-  max-width: 1400px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.brand {
-  font-family: var(--font-headings);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+.brand-logo {
+  height: 25px; /* Tamaño del logo en la navbar */
+  display: block;
 }
 
 .nav-links {
@@ -290,15 +292,16 @@ ul {
 .hero-content {
   padding: 0 20px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hero-title {
-  font-family: var(--font-headings);
-  font-size: 4rem;
-  font-weight: 700; /* Tipografía más gruesa */
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4), 0 4px 20px rgba(0,0,0,0.8); /* Glow de neón + sombra oscura */
+.hero-logo {
+  max-width: 90%;
+  width: 600px; /* Tamaño grande para portada */
+  margin-bottom: 20px;
+  /* Sin glow effect como solicitaste */
 }
 
 .hero-subtitle {
