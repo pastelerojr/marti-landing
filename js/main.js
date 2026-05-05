@@ -131,60 +131,38 @@ if (video) {
 }
 
 // =========================================================================
-// E. ENVÍO DE FORMULARIO DE CONTACTO (AJAX sin redirección)
+// E. FORMULARIO DE CONTACTO (AJAX FormSubmit)
 // =========================================================================
-const contactForm = document.getElementById('ajax-contact-form');
-const formMessage = document.getElementById('form-message');
-const formButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
-
+const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que la página recargue o redirija
+    e.preventDefault(); // Previene la redirección nativa
     
-    // Cambiar estado del botón
-    const originalText = formButton.innerText;
-    formButton.innerText = "Enviando...";
-    formButton.disabled = true;
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
 
-    // Enviar datos vía AJAX
+    // Usamos fetch para enviar los datos de forma invisible
     fetch(contactForm.action, {
-        method: "POST",
-        body: new FormData(contactForm),
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            // Éxito
-            formMessage.innerHTML = "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.";
-            formMessage.style.display = "block";
-            formMessage.style.color = "#4ade80"; // Verde brillante
-            formMessage.style.border = "1px solid rgba(74, 222, 128, 0.3)";
-            contactForm.reset();
-        } else {
-            // Error de servidor
-            formMessage.innerHTML = "Hubo un error al enviar el mensaje. Inténtalo de nuevo.";
-            formMessage.style.display = "block";
-            formMessage.style.color = "#f87171"; // Rojo
-            formMessage.style.border = "1px solid rgba(248, 113, 113, 0.3)";
-        }
-    })
-    .catch(error => {
-        // Error de red
-        formMessage.innerHTML = "Hubo un problema de red. Inténtalo de nuevo.";
-        formMessage.style.display = "block";
-        formMessage.style.color = "#f87171";
-        formMessage.style.border = "1px solid rgba(248, 113, 113, 0.3)";
-    })
-    .finally(() => {
-        formButton.innerText = originalText;
-        formButton.disabled = false;
-        
-        // Ocultar mensaje después de 6 segundos
-        setTimeout(() => {
-            formMessage.style.display = "none";
-        }, 6000);
+      method: 'POST',
+      body: new FormData(contactForm),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        alert('¡Mensaje enviado con éxito!');
+        contactForm.reset();
+      } else {
+        alert('Hubo un error al enviar el mensaje. Intenta de nuevo.');
+      }
+    }).catch(error => {
+      alert('Hubo un error de conexión al enviar el mensaje. Intenta de nuevo.');
+    }).finally(() => {
+      // Restauramos el botón
+      btn.textContent = originalText;
+      btn.disabled = false;
     });
   });
 }
